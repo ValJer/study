@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<select id="choice-dropdown">
+    <option value="0">All products</option>
+    <option value="1">All Apple products</option>
+    <option value="2">All Apple products cheaper than 1000</option>
+    <option value="3">All Samsung products more expensive than 1000</option>
+    <option value="4">All fragrances</option>
+    <option value="5">All over 4.5 rating</option>
+    <option value="6">All Android phones</option>
+    <option value="7">All skin care products</option>
+    <option value="8">All products cheaper than 1000 with discount</option>
+    <option value="9">All products with stock level over 100</option>
+    <option value="10">One highest rated product</option>
+</select>
+<button onclick="filterProducts()">Filter!</button>
+
+<table>
+    <thead>
+    <tr>
+        <th>Brand</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Rating</th>
+    </tr>
+    </thead>
+    <tbody id="product-list-body"></tbody>
+</table>
+
+
+<script>
+    async function filterProducts() {
+        let code = parseInt(document.querySelector("#choice-dropdown").value)
+        let products = await loadProducts()
+        let filteredProducts = []
+
+        if (code === 0) {
+            for (const product of products) {
+                filteredProducts.push(product);
+            }
+        } else if (code === 1) {
+            for (const product of products) {
+                if (product.brand === 'Apple') {
+                    filteredProducts.push(product);
+                }
+            }
+        } else if (code === 2) {
+            for (const product of products) {
+                //TODO: Do your filter here
+            }
+        }
+
+
+        writeHTML(filteredProducts)
+    }
+
+    async function loadProducts() {
+        let response = await fetch('./data.json');
+        let data = await response.json();
+        return data.products
+    }
+
+    function writeHTML(products) {
+        let content = '';
+        for (const product of products) {
+            let row = ''.concat('<tr>')
+                .concat('<td>').concat(product.brand).concat('</td>')
+                .concat('<td>').concat(product.title).concat('</td>')
+                .concat('<td>').concat(product.price).concat('</td>')
+                .concat('<td>').concat(product.rating).concat('</td>')
+                .concat('</tr>');
+            content += row
+        }
+        document.querySelector("#product-list-body").innerHTML = content;
+    }
+
+</script>
+</body>
+</html>
