@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <form @submit.prevent="addTodo">
+        <input v-model="newTodo">
+        <button>Add Todo</button>
+    </form>
+    <ul>
+        <li v-for="todo in todos" :key="todo.id">
+            {{ todo.text }}
+            <button @click="removeTodo(todo)">X</button>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    const { createApp, ref } = Vue
+
+    createApp({
+        setup() {
+
+            // give each todo a unique id
+            let id = 0
+            const newTodo = ref('')
+            const todos = ref([
+                { id: id++, text: 'Learn HTML' },
+                { id: id++, text: 'Learn JavaScript' },
+                { id: id++, text: 'Learn Vue' }
+            ])
+
+            function addTodo() {
+                // ...
+                newTodo.value = ''
+            }
+
+            function removeTodo(todo) {
+                // ...
+            }
+
+            return {
+                newTodo,
+                todos,
+                addTodo,
+                removeTodo
+            }
+        }
+    }).mount('#app')
+</script>
+
+</body>
+</html>
