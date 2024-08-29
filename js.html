@@ -94,9 +94,13 @@
                     filteredProducts.push(product);
                 }
             }
+        } else if (code === 9) {
+        for (let product of products) {
+            if (product.stock > 100) {
+                filteredProducts.push(product)
+            }
         }
-
-
+    }
         writeHTML(filteredProducts)
     }
 
