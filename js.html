@@ -56,13 +56,19 @@
                     filteredProducts.push(product);
                 }
             }
-
-            filteredProducts.push(highestRatedProduct);
+        }
+        else if (code === 8) {
+            for (let product of products) {
+                if (product.price - ((product.price / 100) * product.discountPercentage) < 1000)
+                    filteredProducts.push(product);
+            }
         }
 
 
 
+
         writeHTML(filteredProducts)
+
     }
 
     async function loadProducts() {
