@@ -75,6 +75,12 @@
                 if (product.price - ((product.price / 100) * product.discountPercentage) < 1000)
                     filteredProducts.push(product);
             }
+        } else if (code === 7) {
+            for (const product of products) {
+                if (product.category === "skincare") {
+                    filteredProducts.push(product);
+                }
+            }
         }
 
         writeHTML(filteredProducts)
