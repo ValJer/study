@@ -75,6 +75,12 @@
                 if (product.price - ((product.price / 100) * product.discountPercentage) < 1000)
                     filteredProducts.push(product);
             }
+        } else if (code === 6) {
+            for (const product of products) {
+                if (product.brand !== "Apple" && product.category === "smartphones") {
+                    filteredProducts.push(product);
+                }
+            }
         } else if (code === 7) {
             for (const product of products) {
                 if (product.category === "skincare") {
@@ -82,6 +88,7 @@
                 }
             }
         }
+
 
         writeHTML(filteredProducts)
     }
