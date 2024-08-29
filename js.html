@@ -45,14 +45,35 @@
                 filteredProducts.push(product);
             }
         } else if (code === 1) {
-            for (const product of products) {
+            for (let product of products) {
                 if (product.brand === 'Apple') {
                     filteredProducts.push(product);
                 }
             }
         } else if (code === 2) {
+            for (let product of products) {
+                if (product.brand === 'Apple' && product.price < 1000) {
+                    filteredProducts.push(product);
+                }
+            }
+
+        } else if (code === 3) {
             for (const product of products) {
-                //TODO: Do your filter here
+                if (product.brand === 'Samsung' && product.price > 1000) {
+                    filteredProducts.push(product);
+                }
+            }
+        }
+        else if (code === 4) {
+            for (const product of products) {
+                if (product.category === "fragrances")
+                    filteredProducts.push(product);
+            }
+        }
+        else if (code === 8) {
+            for (let product of products) {
+                if (product.price - ((product.price / 100) * product.discountPercentage) < 1000)
+                    filteredProducts.push(product);
             }
         } else if (code === 6) {
             for (const product of products) {
@@ -61,7 +82,6 @@
                 }
             }
         }
-
 
 
         writeHTML(filteredProducts)
@@ -75,7 +95,7 @@
 
     function writeHTML(products) {
         let content = '';
-        for (const product of products) {
+        for (let product of products) {
             let row = ''.concat('<tr>')
                 .concat('<td>').concat(product.brand).concat('</td>')
                 .concat('<td>').concat(product.title).concat('</td>')
