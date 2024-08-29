@@ -81,6 +81,12 @@
                     filteredProducts.push(product);
                 }
             }
+        } else if (code === 7) {
+            for (const product of products) {
+                if (product.category === "skincare") {
+                    filteredProducts.push(product);
+                }
+            }
         }
 
 
