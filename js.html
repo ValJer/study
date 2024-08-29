@@ -57,7 +57,12 @@
                 }
             }
 
-        }
+        } else if (code === 3) {
+            for (const product of products) {
+                if (product.brand === 'Samsung' && product.price > 1000) {
+                    filteredProducts.push(product);
+                }
+            }
 
 
 
