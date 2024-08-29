@@ -54,7 +54,14 @@
             for (const product of products) {
                 //TODO: Do your filter here
             }
+        } else if (code === 6) {
+            for (const product of products) {
+                if (product.brand !== "Apple" && product.category === "smartphones") {
+                    filteredProducts.push(product);
+                }
+            }
         }
+
 
 
         writeHTML(filteredProducts)
