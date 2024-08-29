@@ -70,6 +70,13 @@
                     filteredProducts.push(product);
             }
         }
+        else if (code === 5) {
+            for (const product of products) {
+                if (product.rating > 4.5) {
+                    filteredProducts.push(product);
+                }
+            }
+        }
         else if (code === 8) {
             for (let product of products) {
                 if (product.price - ((product.price / 100) * product.discountPercentage) < 1000)
