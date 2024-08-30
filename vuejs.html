@@ -4,11 +4,48 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .bg-red {
+            background-color: red;
+        }
+        .bg-green {
+            background-color: green;
+        }
+    </style>
 </head>
+
 <body>
 
 <div id="app">
     {{ message }}
+    <h1 :class="bgRedClass">This is awesome header!</h1>
+    <button @click="increment">Increment me {{ counter }}</button>
+    <br>
+    <button @click="updateColorToGreen">Make the background color to green</button>
+    <input type="text" v-model="inputText">
+    <br>
+    <button @click="alertMyInput">What is my input?</button>
+
+    <br>
+
+    <input type="text" placeholder="Eesnimi" v-model="firstName">
+    <input type="text" placeholder="Perenimi" v-model="lastName">
+    <button @click="alertMyName">Alert my name</button>
+
+    <br>
+
+    <div v-if="isOptionalTextVisible">This is an optional text</div>
+    <button @click="triggerOptionalText">Trigger optional text</button>
+
+    <br>
+
+    <ul>
+        <li v-for="todo in todos" :key="todo">{{ todo }}</li>
+    </ul>
+
+    <input v-model="newTodo">
+    <button @click="addNewTodo">Add new todo</button>
+
 </div>
 
 <script>
@@ -16,9 +53,63 @@
 
     createApp({
         setup() {
+
+            const newTodo = ref('')
+            const todos = ref(['Learn JavaScript', 'Learn Java', 'Learn VueJS'])
+
+            function addNewTodo() {
+                todos.value.push(newTodo.value)
+            }
+
             const message = ref('Hello vue!')
+            const bgRedClass = ref('bg-red')
+
+            const firstName = ref('')
+            const lastName = ref('')
+
+            let counter = ref(0)
+
+            function increment() {
+                counter.value++
+                inputText.value = 'my new counter is ' + counter.value
+            }
+
+            function updateColorToGreen() {
+                bgRedClass.value = 'bg-green'
+            }
+
+            function alertMyInput() {
+              alert(inputText.value)
+            }
+
+            function alertMyName() {
+                alert(firstName.value + " " + lastName.value)
+            }
+
+            const isOptionalTextVisible = ref(true)
+            function triggerOptionalText () {
+                isOptionalTextVisible.value = !isOptionalTextVisible.value
+            }
+
+            const inputText = ref('my input text')
+
+
             return {
-                message
+                message,
+                bgRedClass,
+                increment,
+                counter,
+                updateColorToGreen,
+                inputText,
+                alertMyInput,
+                firstName,
+                lastName,
+                alertMyName,
+                triggerOptionalText,
+                isOptionalTextVisible,
+                todos,
+                newTodo,
+                addNewTodo
             }
         }
     }).mount('#app')
