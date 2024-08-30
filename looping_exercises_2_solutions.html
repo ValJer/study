@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Exercise 1)
+    // Reverse a string.
+    // Write a for loop that reverses a string
+    let str = "hello"; // --> olleh
+
+    let reversedStr = ''
+    for (let i = str.length-1; i >= 0; i--) {
+        reversedStr+=str[i]
+    }
+    console.log('Reversed string: ' + reversedStr)
+
+    // Exercise 2)
+    // Write a for loop to find the largest number in an array of numbers
+    const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]; // --> 9
+
+    let largestNumber;
+    for (let i = 0; i < numbers.length; i++) {
+        let currentNumber = numbers[i]
+        if(!largestNumber) {
+            largestNumber = currentNumber
+            continue
+        }
+        if(currentNumber > largestNumber) {
+            largestNumber = currentNumber
+        }
+    }
+    console.log('Largest number: ' + largestNumber)
+
+
+    // Exercise 3)
+    // Write a for loop to count the number of vowels (a, e, i, o, u) in a given string
+    const sentence = "This is a sample sentence."; // --> 8
+
+    const vowels = 'aeiouAEIOU'
+    let countOfVowels = 0
+    for (let i = 0; i < sentence.length; i++) {
+        let letter = sentence[i]
+        if(vowels.indexOf(letter) > -1) {
+            countOfVowels++
+        }
+    }
+    console.log('Count of vowels: ' + countOfVowels)
+
+    // Exercise 4)
+    // Write a for loop to calculate the average of all elements in an array of numbers.
+    const avgNumbers = [10, 20, 30, 40, 50]; // --> 30
+
+    let total = 0
+    for (let i = 0; i < avgNumbers.length; i++) {
+        total += avgNumbers[i]
+    }
+    const avg = total / avgNumbers.length
+    console.log('Average is: ' + avg)
+
+    // Exercise 5)
+    // Write a for loop to find the second largest number in an array of numbers.
+    // Assume numbers are positive
+    const secondLargestNumbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]; // --> 6
+
+    let largest = 0;
+    let secondLargest = 0;
+    for (let i = 0; i < secondLargestNumbers.length; i++) {
+        let currentNumber = secondLargestNumbers[i]
+        if (currentNumber > largest) {
+            secondLargest = largest;
+            largest = currentNumber;
+        } else if (currentNumber > secondLargest && currentNumber !== largest) {
+            secondLargest = currentNumber;
+        }
+    }
+    console.log('The largest number is ' + largest + ' and second largest is ' + secondLargest)
+
+
+    // Exercise 6)
+    // Find Longest Word in a String
+    const sentenceToAnalyze = "The quick brown redfox jumps over the lazy dog";
+
+    const words = sentenceToAnalyze.split(" ");
+    let longestWord = '';
+    for (let word of words) {
+        if (word.length > longestWord.length) {
+            longestWord = word;
+        }
+    }
+    console.log('Longest word is ' + longestWord)
+
+</script>
