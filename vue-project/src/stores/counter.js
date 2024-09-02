@@ -9,10 +9,11 @@ export const useCounterStore = defineStore('counter', () => {
     { title: 'Learn VueJS', body: 'State management', due: '3:00–4:00pm' }]
 
   )
+
   const itemsCount = computed(() => items.value.length)
 
-  function addTodo(todoItems) {
-    //todo: your code
+  function addTodo(todoItem) {
+    items.value.push(todoItem)
   }
 
   return { itemsCount, items, addTodo }

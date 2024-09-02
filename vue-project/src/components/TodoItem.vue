@@ -19,6 +19,7 @@ defineProps({
         <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
         {{ todoItem.due }}
       </small>
+      <button @click="$emit('remove-todo')">Remove</button>
     </span>
   </label>
 </template>
