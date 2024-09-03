@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .remove-button {
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
+            border: 2px solid rgb(231, 50, 50);
+            background-color: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px #333;
+            overflow: hidden;
+            transition: .3s;
+        }
+        .remove-button:hover {
+            background-color: rgb(245, 207, 207);
+            transform: scale(1.2);
+            box-shadow: 0 0 4px #111;
+            transition: .3s;
+        }
+    </style>
 </head>
+
 <body>
 
 <div id="app">
@@ -16,7 +36,7 @@
     <ul>
         <li v-for="todo in todos" :key="todo.id">
             {{ todo.text }}
-            <button @click="removeTodo(todo)">X</button>
+            <button @click="removeTodo(todo)" class="remove-button">X</button>
         </li>
     </ul>
 
@@ -30,20 +50,33 @@
 
             // give each todo a unique id
             let id = 0
-            const newTodo = ref('')
-            const todos = ref([
+            let newTodo = ref('')
+            let todos = ref([
                 { id: id++, text: 'Learn HTML' },
                 { id: id++, text: 'Learn JavaScript' },
                 { id: id++, text: 'Learn Vue' }
             ])
 
             function addTodo() {
-                // ...
-                newTodo.value = ''
+                if (newTodo.value.trim() !== '') {  // Check if input is not empty
+                    const exists = todos.value.some(todo => todo.text === newTodo.value)
+                    if (exists) {
+                        alert(newTodo.value + ' is already in the list!')
+                        return
+                        }
+                    }
+                    todos.value.push({ id: id++, text: newTodo.value }) // Push new todo to list
+                    newTodo.value = ''  // Clear the input field
+                console.log(todos)
+
             }
 
+
             function removeTodo(todo) {
-                // ...
+                const i = todos.value.findIndex(t => t.id === todo.id)
+                if (i !== -1) {
+                    todos.value.splice(i, 1)  // Remove the todo by index
+                }
             }
 
             return {

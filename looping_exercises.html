@@ -11,6 +11,19 @@
     // P.S. Each array includes only integer numbers. Output is a number too.
     let arr_1 = [3, 5, 22, 5,  7,  2,  45, 75, 89, 21, 2]; // --> 276
     let arr_2 = [9, 2, 42, 55, 71, 22, 4,  5,  90, 25, 26]; // --> 351
+    let ar1Sum = 0
+    let ar2Sum = 0
+    for (let i = 0; i < arr_1.length; i++) {
+         ar1Sum += arr_1[i];
+    }
+    for (let i = 0; i< arr_2.length; i++) {
+        ar2Sum += arr_2[i];
+    }
+    let sum = ar1Sum + ar2Sum
+    console.log("Excercise 1")
+    console.log("first array sum is " + ar1Sum);
+    console.log("second array sum is " + ar2Sum);
+    console.log("sum of 2 arrays is " + sum);
 
 
     // Exercise 2)
@@ -18,11 +31,30 @@
     let n1 = 22;
     // Example output:
     // 2 4 6 8 10 12 14 16 18 20 22 OR each item on a new line
+    let arra = [];
+    for (let i = 1; i <= n1; i++){
+        arra.push(i)
+    }
+    let even = [];
+    for (let i = 0; i < arra.length; i++) {
+        if (arra[i] % 2 == 0)
+        even.push(i);
+    }
+    console.log("Excercise 2");
+    console.log("The arrays is " + arra);
+    console.log("Even numbers are " + even);
 
 
     // Exercise 3)
     // Using a for loop output the elements in reverse order
     let arr = [43, "what", 9, true, "cannot", false, "be", 3, true];
+    let rra = [];
+    for (let i = (arr.length - 1); i >= 0; i--) {
+        rra.push(arr[i]);
+    }
+    console.log("Excercise 3")
+    console.log("Base array is " + arr);
+    console.log("Reversed array is " + rra);
     // Example output:
     // true 3.5  be  false cannot  true 9 what 43 OR each item on a new line
 
@@ -32,6 +64,13 @@
     // create a new array containing the sum of each pair. Assume both arrays are of the same length.
     let arr_3   = [4, 6, 7];
     let arr_4    = [8, 1, 9];
+    let arr34 = [];
+    for (let i = 0; i < arr_3.length; i++){
+        arr34.push(arr_3[i] + arr_4[i]);
+    }
+
+    console.log("Excercise 4")
+    console.log("New array containing the sum of each pair is " + arr34);
     // Example output:
     // [12, 7, 16]
 
@@ -40,20 +79,46 @@
     // Given a string change the every second letter to an uppercase ‘Z’. Assume
     // there are no space.
     let str1 = "javascript";
+    let strArray = str1.split("");
+
+
+    for (let i = 1; i <= strArray.length; i=i+2){
+        strArray[i] = "Z";
+    }
+
+
+
+    console.log("Excercise 5");
+    console.log(strArray)
     // Example output:
     // jZvZsZrZpZ OR each letter on a new line
     // HINT: You can use  if((i+1) % 2 == 0) to check for even indexes
 
-
+    console.log("Excercise 6");
     // Exercise 6)
     // Check if a string contains the letter “y”. Print “yes” if it does and “no” if it does not.
-    let str2 = "don’t know why";
-    // Example output:
-    // “yes”
+    let str2 = "don’t yknow wh";
+    if (str2.includes("y") === true) {
+        console.log("YES");
+    }else {
+        console.log("NO")
 
-    // Exercise 7)
-    // Given a number n Calculate the factorial of the number
+        // Example output:
+        // “yes”
+
+        // Exercise 7)
+        // Given a number n Calculate the factorial of the number
+    }
+
     let n2 = 4; //  4 * 3 * 2 * 1 = 24
+    let vast = n2;
+    for (i = n2 - 1; i > 0; i--){
+        vast = vast * i;
+
+
+
+    }
+    console.log(vast)
     // Example output:
     // 24
 </script>

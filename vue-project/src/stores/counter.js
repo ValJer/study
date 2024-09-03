@@ -15,6 +15,8 @@ export const useCounterStore = defineStore('counter', () => {
   function addTodo(todoItem) {
     items.value.push(todoItem)
   }
-
-  return { itemsCount, items, addTodo }
+  function removeTodo(todoItem) {
+    this.todos = this.todos.filter(t => t !== todo);
+  }
+  return { itemsCount, items, addTodo, removeTodo, }
 })
